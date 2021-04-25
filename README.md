@@ -69,7 +69,7 @@ http://localhost:8000/api/token/ | pass vaild "username" and "password" in form-
 http://localhost:8000/api/token/refresh/ | pass "refresh" token in form-data | POST | Getting access token from refresh token if expired | Returns "access" token
 http://localhost:8000/rest/user/ | pass "access" token in request headers(i.e "Bearer your_access_token") | POST | user sign-up | Returns created user data
 http://localhost:8000/rest/post/ | pass "access" token in request headers(i.e "Bearer your_access_token") | GET | Blogs/Posts list | Returns all the available blogs list
-http://localhost:8000/rest/post/ | pass "access" token in request headers(i.e "Bearer your_access_token") + blog data(i.e name and description) in form-data | POST | Create new Blog | -
+http://localhost:8000/rest/post/ | pass "access" token in request headers(i.e "Bearer your_access_token") + blog data(i.e title ,content and author_id) in form-data | POST | Create new Blog | -
 http://localhost:8000/rest/post/likes | pass "access" token in request headers(i.e "Bearer your_access_token") + data(i.e user_id = current_user_ID, like_status = "like" or "unlike" and blog_id = ID of blog on which user is reacting) in form-data | POST | Like/Dislike Blogs | -
 
 
