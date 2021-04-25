@@ -1,0 +1,21 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<div class="container">
+  <h2>Create Blog</h2>
+  <form method="post" action="{% url 'post:create-blog' %}" id="create-blog-form">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" placeholder="Blog Title", name="title" required>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" id="description" rows="3" name="content" required></textarea>
+  </div>
+  <input type="hidden" class="form-control" id="author" name="author_id" value={{user.id}}>
+  {% csrf_token %}
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <a href="{% url 'post:blog-list' %}" class="btn btn-primary">Back</a>
+</form>
+</div>
+{% endblock %}

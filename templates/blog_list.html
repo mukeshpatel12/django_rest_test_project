@@ -1,0 +1,28 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+ <div class="col-md-8 offset-md-2">
+<a href="{% url 'post:create-blog' %}" class="btn btn-primary">Create Blog</a>
+    <h1>Blog Index</h1>
+    <hr>
+    {% for blog in blog_list %}
+    <h2><a href="#">{{ blog.title }}</a></h2>
+    <small>
+        {{ blog.created_at}} |&nbsp;
+        Author:&nbsp;
+        <a href="#">
+            {{ blog.author.username }}
+        </a>&nbsp;
+    </small>
+    <p>{{ blog.content | slice:":400" }}...</p>
+    <a href="#">Total Like: {{ blog.liked|length }}</a>
+    <form method="post" action="{% url 'post:like-unlike-blog' %}" id="login-form">
+        {% csrf_token %}
+        <input type="hidden" class="form-control" id="user_id" name="user_id" value={{user.id}}>
+        <input type="hidden" class="form-control" id="blog_id" name="blog_id" value={{blog.id}}>
+        <button type="submit" class="btn btn-primary" name="submit" value="like">Like</button>
+        <button type="submit" class="btn btn-danger" name="submit" value="unlike">Dislike</button>
+    </form>
+    {% endfor %}
+</div>
+{% endblock %}

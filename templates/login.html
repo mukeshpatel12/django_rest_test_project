@@ -1,0 +1,21 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<div class="container">
+  {% if error_msg %}<div class="alert alert-danger" role="alert">{{error_msg}}</div>{% endif %}
+  <h2>Login Page</h2>
+  <form method="post" action="{% url 'user:login' %}" id="login-form">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Username</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+  </div>
+  {% csrf_token %}
+  <button type="submit" class="btn btn-primary">Login</button>
+  <a href="{% url 'user:signup' %}" class="btn btn-primary">SignUp</a>
+</form>
+</div>
+{% endblock %}
